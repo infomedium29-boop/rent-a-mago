@@ -642,3 +642,49 @@ ul { list-style: none; }
   .prices-table { font-size: 0.82rem; }
   .prices-table th, .prices-table td { padding: 10px 10px; }
 }
+
+
+/* ---- DESKTOP FULL WIDTH LAYOUT ----
+   Desktop sadržaj se širi preko cijele širine ekrana na svim monitorima. */
+@media (min-width: 769px) {
+  .top-header-inner,
+  .navbar-inner,
+  .hero-inner,
+  .booking-bar-inner,
+  .container,
+  .footer-inner,
+  .footer-bottom {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+
+  .hero-inner {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .contact-form-wrap {
+    max-width: none !important;
+  }
+
+  .vehicle-row {
+    grid-template-columns: 300px minmax(0, 1fr) 240px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .top-header-inner,
+  .navbar-inner,
+  .hero-inner,
+  .booking-bar-inner,
+  .container,
+  .footer-inner,
+  .footer-bottom {
+    padding-left: 72px !important;
+    padding-right: 72px !important;
+  }
+}
