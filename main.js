@@ -3,15 +3,25 @@ const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 if (burger && navLinks) {
   burger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    burger.classList.toggle('open');
+    const isOpen = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    // Prevent body scroll when menu open
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-  // Close on link click
   navLinks.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       burger.classList.remove('open');
+      document.body.style.overflow = '';
     });
+  });
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !burger.contains(e.target)) {
+      navLinks.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   });
 }
 

@@ -414,37 +414,227 @@ ul { list-style: none; }
   .features-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .vehicle-row { grid-template-columns: 200px 1fr 180px; }
-  .hero-panel { max-width: 400px; }
+  .hero-panel { max-width: 420px; }
 }
 
+/* ==============================
+   TABLET + MOBILE  (≤ 768px)
+   ============================== */
 @media (max-width: 768px) {
-  .top-header-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .header-contact { align-items: flex-start; }
-  .nav-links { display: none; position: fixed; top: 48px; left: 0; right: 0; bottom: 0; background: var(--blue); flex-direction: column; align-items: center; justify-content: center; gap: 0; z-index: 999; }
+
+  /* --- TOP HEADER: logo + phone side-by-side, compact --- */
+  .top-header { padding: 12px 0; }
+  .top-header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .logo-img { height: 48px; }
+  .header-contact {
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .header-phones { align-items: flex-end; }
+  .header-phone {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .header-email { display: none; }
+  .header-hours { display: none; }
+
+  /* --- NAVBAR --- */
+  .navbar-inner { padding: 0 16px; min-height: 48px; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--blue);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    z-index: 998;
+  }
   .nav-links.open { display: flex; }
-  .nav-link { font-size: 1.1rem; padding: 18px 40px; width: 100%; text-align: center; }
+  .nav-link {
+    font-size: 1.15rem;
+    padding: 20px 48px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.15em;
+  }
+  .nav-link:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
   .nav-phone-pill { display: none; }
-  .burger { display: flex; }
-  .hero-inner { justify-content: center; }
-  .hero-panel { clip-path: none; padding: 32px 28px; max-width: 100%; }
-  .booking-bar-inner { flex-direction: column; gap: 10px; }
+  .burger { display: flex; z-index: 999; }
+
+  /* Burger → X animation */
+  .burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* --- HERO: full-screen, panel bottom-aligned --- */
+  .hero {
+    min-height: 88vw;
+    align-items: flex-end;
+  }
+  .hero-bg {
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.55) 60%,
+      rgba(0,0,0,0.82) 100%);
+  }
+  .hero-inner {
+    padding: 0;
+    justify-content: stretch;
+    align-items: flex-end;
+  }
+  .hero-panel {
+    clip-path: none;
+    padding: 28px 20px 32px;
+    max-width: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(10,20,40,0.96) 30%);
+    backdrop-filter: none;
+    border-radius: 0;
+  }
+  .hero-panel h1 {
+    font-size: clamp(1.45rem, 5.5vw, 1.9rem);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .hero-panel p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    max-width: 360px;
+  }
+
+  /* --- BOOKING BAR: clean vertical stack --- */
+  .booking-bar { padding: 0; }
+  .booking-bar-inner {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
   .booking-divider { display: none; }
-  .booking-group { min-width: 100%; }
-  .vehicle-row { grid-template-columns: 1fr; }
-  .vehicle-img-wrap { padding: 20px; }
-  .vehicle-price-box { border-left: none; border-top: 1px solid var(--border); }
-  .vehicle-info { border-left: none; border-top: 1px solid var(--border); }
-  .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .booking-group {
+    min-width: 100%;
+    flex: none;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 14px 20px;
+    gap: 6px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .booking-group label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+    min-width: 120px;
+  }
+  .booking-group input,
+  .booking-group select {
+    height: 36px;
+    flex: 1;
+    text-align: right;
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+  .booking-group input::placeholder { color: rgba(255,255,255,0.5); }
+  .btn-book {
+    width: 100%;
+    height: 52px;
+    font-size: 0.88rem;
+    letter-spacing: 0.18em;
+    border-radius: 0;
+    background: #1a1a2a;
+  }
+  .btn-book:hover { background: #111; }
+
+  /* --- LOCATION SECTION --- */
+  .location-section { padding: 40px 0; }
+  .location-btns { flex-direction: column; align-items: stretch; padding: 0 16px; }
+  .btn-primary, .btn-secondary { text-align: center; padding: 14px; width: 100%; }
+
+  /* --- VEHICLE ROWS --- */
+  .vehicle-row { grid-template-columns: 1fr; border-radius: 4px; }
+  .vehicle-img-wrap { padding: 24px 32px; min-height: 160px; }
+  .vehicle-info { border-left: none; border-top: 1px solid var(--border); padding: 20px; }
+  .vehicle-price-box {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    gap: 8px;
+  }
+  .price-label { width: 100%; text-align: left; }
+  .price-col-wrap { display: flex; flex-direction: column; }
+  .btn-upit { width: auto; padding: 11px 28px; }
+
+  /* --- FEATURES --- */
+  .features-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .feature-card { padding: 0 4px; }
+
+  /* --- FLEET CAROUSEL --- */
+  .fleet-card { padding: 28px 20px; }
+  .fleet-car-img { width: 220px; height: 140px; }
+
+  /* --- FOOTER --- */
+  .footer { padding-top: 36px; }
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding-bottom: 32px;
+  }
+  .footer-inner > div:first-child { grid-column: 1 / -1; }
+  .footer-logo-img { height: 50px; }
+
+  /* --- FORM --- */
   .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 24px 16px; }
+
+  /* --- MOBILE BOTTOM BAR --- */
   .mobile-bar { display: flex; }
-  body { padding-bottom: 60px; }
-  .contact-form-wrap { padding: 24px 20px; }
+  body { padding-bottom: 64px; }
 }
 
+/* ==============================
+   SMALL PHONES (≤ 480px)
+   ============================== */
 @media (max-width: 480px) {
-  .features-grid { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .hero-panel h1 { font-size: 1.4rem; }
-  .location-btns { flex-direction: column; }
+  .top-header-inner { padding: 0 16px; }
+  .logo-img { height: 42px; }
+  .header-phone { font-size: 0.82rem; }
+
+  .hero { min-height: 100vw; }
+  .hero-panel { padding: 24px 16px 28px; }
+  .hero-panel h1 { font-size: 1.3rem; }
+  .hero-panel p { font-size: 0.84rem; }
+
+  .booking-group { padding: 12px 16px; }
+
+  .section { padding: 48px 0; }
+  .features-grid { grid-template-columns: 1fr; gap: 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+
+  .section-title { font-size: 1.4rem; }
+
+  .fleet-car-img { width: 180px; height: 115px; }
+  .fleet-card { padding: 24px 16px; }
+  .fleet-price-new { font-size: 1.5rem; }
+
+  .vehicle-img-wrap { padding: 20px; }
+  .prices-table { font-size: 0.82rem; }
+  .prices-table th, .prices-table td { padding: 10px 10px; }
 }
