@@ -1034,3 +1034,13 @@ ul { list-style: none; }
     align-items: center;
   }
 }
+
+
+/* Disable mobile zoom gestures */
+html, body {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+input, select, textarea, button {
+  font-size: 16px;
+}
