@@ -86,3 +86,23 @@ if (form) {
     }
   });
 }
+
+
+// Vehicle galleries
+document.querySelectorAll('.vehicle-thumb').forEach((thumb) => {
+  thumb.addEventListener('click', () => {
+    const targetId = thumb.dataset.target;
+    const full = thumb.dataset.full;
+    const target = document.getElementById(targetId);
+    if (!target || !full) return;
+
+    target.src = full;
+    target.alt = thumb.querySelector('img')?.alt || target.alt;
+
+    const group = thumb.parentElement;
+    if (group) {
+      group.querySelectorAll('.vehicle-thumb').forEach((item) => item.classList.remove('is-active'));
+    }
+    thumb.classList.add('is-active');
+  });
+});
