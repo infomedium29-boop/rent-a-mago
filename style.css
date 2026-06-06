@@ -688,3 +688,52 @@ ul { list-style: none; }
     padding-right: 72px !important;
   }
 }
+
+/* ---- ALIGNMENT FIXES: centered desktop nav + centered inquiry button ---- */
+@media (min-width: 769px) {
+  .navbar-inner {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .nav-links {
+    grid-column: 2;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .nav-phone-pill {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .booking-bar-inner {
+    justify-content: center !important;
+    align-items: flex-end;
+  }
+
+  .btn-book {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-bar-inner {
+    align-items: center;
+  }
+
+  .btn-book {
+    width: calc(100% - 40px);
+    max-width: 340px;
+    margin: 16px auto;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
