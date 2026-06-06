@@ -44,22 +44,21 @@ if (fleetCarousel && track && prevBtn && nextBtn) {
     });
 
     const activeCard = cards[current];
-    const carouselStyles = window.getComputedStyle(fleetCarousel);
-    const paddingLeft = parseFloat(carouselStyles.paddingLeft) || 0;
-    const paddingRight = parseFloat(carouselStyles.paddingRight) || 0;
-    const visibleWidth = fleetCarousel.clientWidth - paddingLeft - paddingRight;
-    const viewportCenter = paddingLeft + visibleWidth / 2;
+    const carouselWidth = fleetCarousel.clientWidth;
+    const trackWidth = track.scrollWidth;
 
-    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
-    const firstCardCenter = cards[0].offsetLeft + cards[0].offsetWidth / 2;
-    const lastCardCenter = cards[total - 1].offsetLeft + cards[total - 1].offsetWidth / 2;
+    let translateX = 0;
 
-    let translateX = viewportCenter - cardCenter;
-    const maxTranslate = viewportCenter - firstCardCenter;
-    const minTranslate = viewportCenter - lastCardCenter;
-
-    if (translateX > maxTranslate) translateX = maxTranslate;
-    if (translateX < minTranslate) translateX = minTranslate;
+    if (trackWidth <= carouselWidth) {
+      translateX = (carouselWidth - trackWidth) / 2;
+    } else {
+      const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
+      translateX = carouselWidth / 2 - cardCenter;
+      const maxTranslate = 0;
+      const minTranslate = carouselWidth - trackWidth;
+      if (translateX > maxTranslate) translateX = maxTranslate;
+      if (translateX < minTranslate) translateX = minTranslate;
+    }
 
     track.style.transform = `translateX(${translateX}px)`;
   }
