@@ -26,25 +26,55 @@ if (burger && navLinks) {
 }
 
 // Fleet carousel
+const fleetCarousel = document.getElementById('fleetCarousel');
 const track = document.getElementById('fleetTrack');
 const prevBtn = document.getElementById('fleetPrev');
 const nextBtn = document.getElementById('fleetNext');
 
-if (track && prevBtn && nextBtn) {
+if (fleetCarousel && track && prevBtn && nextBtn) {
   let current = 0;
-  const cards = track.querySelectorAll('.fleet-card');
+  const cards = Array.from(track.querySelectorAll('.fleet-card'));
   const total = cards.length;
 
-  function goTo(idx) {
-    current = (idx + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
+  function updateFleetCarousel() {
+    if (!cards.length) return;
+
+    cards.forEach((card, index) => {
+      card.classList.toggle('is-active', index === current);
+    });
+
+    const activeCard = cards[current];
+    const carouselWidth = fleetCarousel.clientWidth;
+    const trackWidth = track.scrollWidth;
+
+    let translateX = 0;
+
+    if (trackWidth <= carouselWidth) {
+      translateX = (carouselWidth - trackWidth) / 2;
+    } else {
+      const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
+      translateX = carouselWidth / 2 - cardCenter;
+      const maxTranslate = 0;
+      const minTranslate = carouselWidth - trackWidth;
+      if (translateX > maxTranslate) translateX = maxTranslate;
+      if (translateX < minTranslate) translateX = minTranslate;
+    }
+
+    track.style.transform = `translateX(${translateX}px)`;
   }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + total) % total;
+    updateFleetCarousel();
+  });
 
-  // Auto-advance
-  setInterval(() => goTo(current + 1), 5000);
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % total;
+    updateFleetCarousel();
+  });
+
+  window.addEventListener('resize', updateFleetCarousel);
+  updateFleetCarousel();
 }
 
 // Contact form Web3Forms
