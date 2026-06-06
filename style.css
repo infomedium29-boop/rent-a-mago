@@ -21,7 +21,10 @@
   --font-heading: 'Raleway', 'Segoe UI', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font-main);
@@ -29,6 +32,7 @@ body {
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -167,7 +171,7 @@ ul { list-style: none; }
 .section-light { background: var(--white); }
 .section-grey { background: var(--bg-light); }
 
-.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
 .section-title {
   font-family: var(--font-heading);
@@ -577,10 +581,10 @@ ul { list-style: none; }
     align-items: center;
     padding: 16px 20px;
     gap: 8px;
+    text-align: left;
   }
-  .price-label { width: 100%; text-align: left; }
-  .price-col-wrap { display: flex; flex-direction: column; }
-  .btn-upit { width: auto; padding: 11px 28px; }
+  .price-label { width: 100%; }
+  .btn-upit { width: auto; min-width: 120px; padding: 11px 20px; }
 
   /* --- FEATURES --- */
   .features-grid { grid-template-columns: 1fr 1fr; gap: 20px; }

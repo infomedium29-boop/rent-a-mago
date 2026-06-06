@@ -9,17 +9,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+/* TABLE — desktop only */
 .prices-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
 .prices-table th { background:var(--blue); color:var(--white); padding:13px 16px; text-align:left; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; }
 .prices-table td { padding:14px 16px; border-bottom:1px solid var(--border); vertical-align:middle; }
 .prices-table tr:last-child td { border-bottom:none; }
 .prices-table tr:hover td { background:var(--blue-light); }
 .prices-table .price-col { font-weight:700; color:var(--red); font-size:1rem; }
+
+/* CARDS — mobile only, hidden on desktop */
+.price-cards { display:none; flex-direction:column; gap:12px; }
+.price-card {
+  border:1px solid var(--border); border-radius:6px;
+  overflow:hidden; background:var(--white);
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.price-card-header {
+  background:var(--blue); padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.price-card-header h3 { color:var(--white); font-size:0.95rem; font-weight:700; margin:0; }
+.price-card-body {
+  padding:14px 16px;
+  display:grid; grid-template-columns:1fr 1fr; gap:8px 16px;
+}
+.price-card-row { display:flex; flex-direction:column; gap:2px; }
+.price-card-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); font-weight:700; }
+.price-card-val { font-size:0.9rem; color:var(--text); }
+.price-card-footer {
+  border-top:1px solid var(--border);
+  padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.price-card-price { font-size:1.3rem; font-weight:700; color:var(--red); }
+.price-card-price small { font-size:0.75rem; color:var(--text-muted); font-weight:400; }
+
+/* BADGES */
 .type-badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.05em; }
 .badge-suv { background:#e8f4ff; color:#1a6ec0; }
 .badge-karavan { background:#e8fff0; color:#1a8040; }
 .badge-gradski { background:#fff8e8; color:#b07a00; }
 .badge-cabrio { background:#ffe8f0; color:#c0206a; }
+
+@media (max-width: 640px) {
+  .prices-table { display:none; }
+  .price-cards { display:flex; }
+}
 </style>
 </head>
 <body>
@@ -103,6 +138,86 @@
         </tr>
       </tbody>
     </table>
+    <!-- MOBILE CARDS (hidden on desktop, visible on mobile) -->
+    <div class="price-cards">
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h3>VW T-Roc ili slično</h3>
+          <span class="type-badge badge-suv">SUV</span>
+        </div>
+        <div class="price-card-body">
+          <div class="price-card-row"><span class="price-card-label">Putnici</span><span class="price-card-val">5</span></div>
+          <div class="price-card-row"><span class="price-card-label">Gorivo</span><span class="price-card-val">Benzin + LPG</span></div>
+        </div>
+        <div class="price-card-footer">
+          <div class="price-card-price">od 55 EUR <small>/ dan</small></div>
+          <a href="kontakt.html" class="btn-upit" style="width:auto;padding:10px 20px">Upit</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h3>VW Golf 7 Variant ili slično</h3>
+          <span class="type-badge badge-karavan">Karavan</span>
+        </div>
+        <div class="price-card-body">
+          <div class="price-card-row"><span class="price-card-label">Putnici</span><span class="price-card-val">5</span></div>
+          <div class="price-card-row"><span class="price-card-label">Gorivo</span><span class="price-card-val">Dizel</span></div>
+        </div>
+        <div class="price-card-footer">
+          <div class="price-card-price">od 50 EUR <small>/ dan</small></div>
+          <a href="kontakt.html" class="btn-upit" style="width:auto;padding:10px 20px">Upit</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h3>VW Polo ili slično</h3>
+          <span class="type-badge badge-gradski">Gradski</span>
+        </div>
+        <div class="price-card-body">
+          <div class="price-card-row"><span class="price-card-label">Putnici</span><span class="price-card-val">5</span></div>
+          <div class="price-card-row"><span class="price-card-label">Gorivo</span><span class="price-card-val">Dizel</span></div>
+        </div>
+        <div class="price-card-footer">
+          <div class="price-card-price">od 40 EUR <small>/ dan</small></div>
+          <a href="kontakt.html" class="btn-upit" style="width:auto;padding:10px 20px">Upit</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h3>VW Up ili slično</h3>
+          <span class="type-badge badge-gradski">Mali gradski</span>
+        </div>
+        <div class="price-card-body">
+          <div class="price-card-row"><span class="price-card-label">Putnici</span><span class="price-card-val">4</span></div>
+          <div class="price-card-row"><span class="price-card-label">Gorivo</span><span class="price-card-val">Benzin</span></div>
+        </div>
+        <div class="price-card-footer">
+          <div class="price-card-price">od 35 EUR <small>/ dan</small></div>
+          <a href="kontakt.html" class="btn-upit" style="width:auto;padding:10px 20px">Upit</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h3>Opel Adam Cabrio ili slično</h3>
+          <span class="type-badge badge-cabrio">Cabrio</span>
+        </div>
+        <div class="price-card-body">
+          <div class="price-card-row"><span class="price-card-label">Putnici</span><span class="price-card-val">4</span></div>
+          <div class="price-card-row"><span class="price-card-label">Gorivo</span><span class="price-card-val">Benzin</span></div>
+        </div>
+        <div class="price-card-footer">
+          <div class="price-card-price">od 45 EUR <small>/ dan</small></div>
+          <a href="kontakt.html" class="btn-upit" style="width:auto;padding:10px 20px">Upit</a>
+        </div>
+      </div>
+
+    </div><!-- /price-cards -->
+
     <p class="price-asterisk-note" style="margin-top:24px">* Cijena se odnosi na kratkoročni najam u sezoni. Za duži najam, izvan sezone ili posebne uvjete kontaktirajte nas direktno.</p>
     <div style="text-align:center;margin-top:40px;display:flex;gap:16px;justify-content:center">
       <a href="kontakt.html" class="btn-primary">Pošalji upit</a>
