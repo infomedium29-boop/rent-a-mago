@@ -684,7 +684,8 @@ ul { list-style: none; }
   .header-hours { display: none; }
 
   /* --- NAVBAR --- */
-  .navbar-inner { padding: 0 16px; min-height: 48px; }
+  .navbar-inner { padding: 0 16px; min-height: 48px; justify-content: flex-end; }
+  .burger { margin-left: auto; }
   .nav-links {
     display: none;
     position: fixed;
