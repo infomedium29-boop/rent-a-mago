@@ -223,6 +223,34 @@ ul { list-style: none; }
 
 .inquiry-section .section-sub { margin-bottom: 0; color: rgba(17, 28, 44, 0.72); }
 .inquiry-section .section-title { margin-bottom: 12px; }
+
+.inquiry-section .container {
+  max-width: 980px;
+}
+.inquiry-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.booking-group,
+.booking-action-wrap {
+  width: 100%;
+}
+.booking-group input,
+.booking-group select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+}
+.booking-group input[type="date"],
+.booking-group input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.booking-action-wrap .btn-book {
+  min-width: 260px;
+}
 /* ---- LOCATION SECTION ---- */
 .location-section { padding: 56px 0; background: var(--white); text-align: center; }
 .location-btns { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
@@ -672,11 +700,14 @@ ul { list-style: none; }
   /* --- BOOKING / INQUIRY SECTION --- */
   .booking-bar { padding: 56px 0; }
   .inquiry-header { margin-bottom: 24px; padding: 0 8px; }
+  .inquiry-section .container { padding: 0 20px; }
   .inquiry-card {
     grid-template-columns: 1fr;
     gap: 14px;
-    padding: 20px 16px;
+    padding: 22px 16px;
     border-radius: 20px;
+    max-width: 100%;
+    margin: 0 auto;
   }
   .booking-bar-inner {
     padding: 0;
@@ -693,10 +724,11 @@ ul { list-style: none; }
     font-size: 0.72rem;
     color: rgba(255,255,255,0.86);
     min-width: 0;
+    text-align: left;
   }
   .booking-group input,
   .booking-group select {
-    height: 48px;
+    height: 50px;
     text-align: left;
     background: rgba(255,255,255,0.92);
     color: var(--text);
@@ -704,19 +736,26 @@ ul { list-style: none; }
     border-radius: 12px;
     font-size: 0.92rem;
     padding: 0 14px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
   }
   .booking-group input::placeholder { color: #8ba0ae; }
   .booking-action-wrap {
-    justify-content: stretch;
-    padding-top: 4px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
   }
   .btn-book {
     width: 100%;
+    max-width: 320px;
     min-height: 52px;
     font-size: 0.88rem;
     letter-spacing: 0.16em;
     border-radius: 12px;
     background: linear-gradient(135deg, #10172d 0%, #202744 100%);
+    margin: 0 auto;
   }
 
   /* --- LOCATION SECTION --- */
@@ -789,8 +828,10 @@ ul { list-style: none; }
   .hero-panel p { font-size: 0.83rem; }
 
   .booking-bar { padding: 48px 0; }
+  .inquiry-section .container { padding: 0 16px; }
   .inquiry-card { padding: 18px 14px; }
   .booking-group { padding: 0; }
+  .btn-book { max-width: 100%; }
 
   .section { padding: 48px 0; }
   .features-grid { grid-template-columns: 1fr; gap: 20px; }
