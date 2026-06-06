@@ -258,6 +258,39 @@ ul { list-style: none; }
 .booking-group input[type="time"] {
   text-align: center;
 }
+
+.booking-group input[type="date"],
+.booking-group input[type="time"] {
+  text-align: center;
+  text-align-last: center;
+}
+.booking-group input[type="date"]::-webkit-date-and-time-value,
+.booking-group input[type="time"]::-webkit-date-and-time-value {
+  text-align: center;
+}
+.booking-group input[type="date"]::-webkit-datetime-edit,
+.booking-group input[type="time"]::-webkit-datetime-edit {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.booking-group input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+.booking-group input[type="time"]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.booking-group input[type="date"]::-webkit-datetime-edit-text,
+.booking-group input[type="date"]::-webkit-datetime-edit-day-field,
+.booking-group input[type="date"]::-webkit-datetime-edit-month-field,
+.booking-group input[type="date"]::-webkit-datetime-edit-year-field,
+.booking-group input[type="time"]::-webkit-datetime-edit-hour-field,
+.booking-group input[type="time"]::-webkit-datetime-edit-minute-field,
+.booking-group input[type="time"]::-webkit-datetime-edit-ampm-field,
+.booking-group input[type="time"]::-webkit-datetime-edit-text {
+  text-align: center;
+}
 /* ---- LOCATION SECTION ---- */
 .location-section { padding: 56px 0; background: var(--white); text-align: center; }
 .location-btns { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
