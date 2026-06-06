@@ -169,12 +169,13 @@ ul { list-style: none; }
   max-width: 1160px; margin: 0 auto; padding: 0 24px;
 }
 .booking-group { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.booking-group label { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.92); }
+.booking-group label { font-size: 0.84rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.92); text-align: center; }
 .booking-group input, .booking-group select {
-  height: 54px; padding: 0 16px;
+  height: 58px; padding: 0 18px;
   border: 1px solid rgba(255,255,255,0.28); border-radius: 14px;
-  font-family: var(--font-main); font-size: 0.95rem; color: var(--text);
+  font-family: var(--font-main); font-size: 1.05rem; font-weight: 600; color: var(--text);
   background: rgba(255,255,255,0.88);
+  text-align: center;
   width: 100%;
 }
 .booking-group input:focus, .booking-group select:focus { outline: 2px solid rgba(255,255,255,0.5); }
@@ -186,10 +187,10 @@ ul { list-style: none; }
   padding-top: 6px;
 }
 .btn-book {
-  min-height: 54px; padding: 0 34px;
+  min-height: 56px; padding: 0 34px;
   background: linear-gradient(135deg, #12182f 0%, #202641 100%); color: var(--white);
   border: none; border-radius: 14px;
-  font-family: var(--font-main); font-size: 0.88rem; font-weight: 800;
+  font-family: var(--font-main); font-size: 0.96rem; font-weight: 800;
   letter-spacing: 0.14em; text-transform: uppercase;
   cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; white-space: nowrap;
   box-shadow: 0 14px 30px rgba(10, 24, 48, 0.2);
@@ -250,6 +251,12 @@ ul { list-style: none; }
 }
 .booking-action-wrap .btn-book {
   min-width: 260px;
+}
+.booking-group input::placeholder,
+.booking-group select,
+.booking-group input[type="date"],
+.booking-group input[type="time"] {
+  text-align: center;
 }
 /* ---- LOCATION SECTION ---- */
 .location-section { padding: 56px 0; background: var(--white); text-align: center; }
@@ -721,27 +728,28 @@ ul { list-style: none; }
     justify-content: flex-start;
   }
   .booking-group label {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.86);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.9);
     min-width: 0;
-    text-align: left;
+    text-align: center;
   }
   .booking-group input,
   .booking-group select {
-    height: 50px;
-    text-align: left;
+    height: 56px;
+    text-align: center;
     background: rgba(255,255,255,0.92);
     color: var(--text);
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 12px;
-    font-size: 0.92rem;
-    padding: 0 14px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    padding: 0 16px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
     margin: 0;
   }
-  .booking-group input::placeholder { color: #8ba0ae; }
+  .booking-group input::placeholder { color: #8ba0ae; text-align: center; font-size: 1.02rem; }
   .booking-action-wrap {
     justify-content: center;
     align-items: center;
@@ -750,8 +758,8 @@ ul { list-style: none; }
   .btn-book {
     width: 100%;
     max-width: 320px;
-    min-height: 52px;
-    font-size: 0.88rem;
+    min-height: 56px;
+    font-size: 0.96rem;
     letter-spacing: 0.16em;
     border-radius: 12px;
     background: linear-gradient(135deg, #10172d 0%, #202744 100%);
@@ -829,7 +837,7 @@ ul { list-style: none; }
 
   .booking-bar { padding: 48px 0; }
   .inquiry-section .container { padding: 0 16px; }
-  .inquiry-card { padding: 18px 14px; }
+  .inquiry-card { padding: 20px 16px; }
   .booking-group { padding: 0; }
   .btn-book { max-width: 100%; }
 
