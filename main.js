@@ -43,17 +43,23 @@ if (fleetCarousel && track && prevBtn && nextBtn) {
       card.classList.toggle('is-active', index === current);
     });
 
+    const activeCard = cards[current];
+    const carouselWidth = fleetCarousel.clientWidth;
     const styles = window.getComputedStyle(fleetCarousel);
     const paddingLeft = parseFloat(styles.paddingLeft) || 0;
     const paddingRight = parseFloat(styles.paddingRight) || 0;
-    const carouselWidth = fleetCarousel.clientWidth;
     const visibleWidth = carouselWidth - paddingLeft - paddingRight;
+    const isMobile = window.innerWidth <= 768;
 
-    const activeCard = cards[current];
-    const activeCardWidth = activeCard.getBoundingClientRect().width || activeCard.offsetWidth;
-    const sideSpace = Math.max(0, visibleWidth / 2 - activeCardWidth / 2);
-    track.style.paddingLeft = `${sideSpace}px`;
-    track.style.paddingRight = `${sideSpace}px`;
+    if (isMobile) {
+      const activeCardWidth = activeCard.getBoundingClientRect().width || activeCard.offsetWidth;
+      const sideSpace = Math.max(0, (visibleWidth - activeCardWidth) / 2);
+      track.style.paddingLeft = `${sideSpace}px`;
+      track.style.paddingRight = `${sideSpace}px`;
+    } else {
+      track.style.paddingLeft = '0px';
+      track.style.paddingRight = '0px';
+    }
 
     const trackWidth = track.scrollWidth;
     let translateX = 0;
