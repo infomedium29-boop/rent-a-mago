@@ -684,7 +684,19 @@ ul { list-style: none; }
   .header-hours { display: none; }
 
   /* --- NAVBAR --- */
-  .navbar-inner { padding: 0 16px; min-height: 48px; justify-content: flex-end; }
+  .navbar-inner { padding: 0 16px; min-height: 48px; justify-content: space-between; }
+  .mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    white-space: nowrap;
+    line-height: 1;
+  }
   .burger { margin-left: auto; }
   .nav-links {
     display: none;
