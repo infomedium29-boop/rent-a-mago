@@ -903,10 +903,12 @@ ul { list-style: none; }
 
   .fleet-carousel { padding: 12px 52px 6px; }
   .fleet-track { gap: 14px; }
-  .fleet-card { flex-basis: 78vw; max-width: 310px; padding: 18px 14px 20px; opacity: 0.82; transform: scale(0.96); }
+  .fleet-card { flex-basis: min(74vw, 290px); max-width: 290px; padding: 18px 14px 20px; opacity: 0.82; transform: scale(0.96); }
   .fleet-card.is-active { transform: scale(1); }
   .fleet-car-img { width: 100%; }
   .fleet-price-new { font-size: 1.5rem; }
+  .fleet-specs { gap: 8px 10px; }
+  .fleet-spec { font-size: 0.74rem; }
   .fleet-nav { width: 42px; height: 42px; font-size: 1.2rem; }
   .fleet-prev { left: 6px; }
   .fleet-next { right: 6px; }

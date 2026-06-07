@@ -46,16 +46,20 @@ if (fleetCarousel && track && prevBtn && nextBtn) {
     const activeCard = cards[current];
     const carouselWidth = fleetCarousel.clientWidth;
     const trackWidth = track.scrollWidth;
+    const styles = window.getComputedStyle(fleetCarousel);
+    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+    const paddingRight = parseFloat(styles.paddingRight) || 0;
+    const visibleWidth = carouselWidth - paddingLeft - paddingRight;
 
     let translateX = 0;
 
-    if (trackWidth <= carouselWidth) {
-      translateX = (carouselWidth - trackWidth) / 2;
+    if (trackWidth <= visibleWidth) {
+      translateX = paddingLeft + (visibleWidth - trackWidth) / 2;
     } else {
       const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
-      translateX = carouselWidth / 2 - cardCenter;
-      const maxTranslate = 0;
-      const minTranslate = carouselWidth - trackWidth;
+      translateX = paddingLeft + visibleWidth / 2 - cardCenter;
+      const maxTranslate = paddingLeft;
+      const minTranslate = carouselWidth - paddingRight - trackWidth;
       if (translateX > maxTranslate) translateX = maxTranslate;
       if (translateX < minTranslate) translateX = minTranslate;
     }
